@@ -28,7 +28,6 @@ if (GlobalVue) {
 }
 
 export default {
-  install,
   CrudTable,
   CrudForm,
   CrudFormGroup,
