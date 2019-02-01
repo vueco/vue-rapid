@@ -63,7 +63,8 @@
     "url": "https://github.com/vueco/vue-rapid.git"
   },
   "files": [
-    "dist/*"
+    "dist/*",
+    "src/*"
   ],
   "keywords": [
     "vue",
