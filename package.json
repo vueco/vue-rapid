@@ -4,7 +4,7 @@
   "private": false,
   "license": "MIT",
   "main": "dist/vue-rapid.umd.min.js",
-  "module": "dist/vue-rapid.common.minjs",
+  "module": "dist/vue-rapid.common.min.js",
   "unpkg": "dist/vue-rapid.umd.min.js",
   "browser": {
     "./form": "src/components/CrudForm.vue",
