@@ -1,0 +1,97 @@
+{
+  "name": "vue-rapid",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "main": "dist/vue-rapid.umd.min.js",
+  "module": "dist/vue-rapid.common.minjs",
+  "unpkg": "dist/vue-rapid.umd.min.js",
+  "browser": {
+    "./form": "src/components/CrudForm.vue",
+    "./form-group": "src/components/CrudFormGroup.vue",
+    "./table": "src/components/CrudTable.vue"
+  },
+  "author": "Aleksey Razbakov <aleksey@razbakov.com> (https://razbakov.com)",
+  "scripts": {
+    "build": "vue-cli-service build --target lib src/index.js",
+    "build:docs": "vuepress build docs && yarn build:storybook",
+    "build:storybook": "build-storybook -o docs/.vuepress/dist/storybook",
+    "lint": "vue-cli-service lint",
+    "dev": "vuepress dev docs",
+    "serve": "start-storybook -p 9001",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "vue": "^2.5.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-notes": "^4.1.11",
+    "@storybook/addon-storysource": "^4.1.11",
+    "@storybook/vue": "^4.1.11",
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-plugin-unit-jest": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.5",
+    "babel-preset-vue": "^2.0.2",
+    "bootstrap": "^4.2.1",
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "express": "^4.16.4",
+    "express-urlrewrite": "^1.2.0",
+    "font-awesome": "^4.7.0",
+    "lint-staged": "^8.1.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-cli-plugin-bootstrap": "^1.0.0-alpha.1",
+    "vue-cli-plugin-bootstrap-vue": "^0.1.0",
+    "vue-loader": "^15.6.2",
+    "vue-template-compiler": "^2.5.22",
+    "vuepress": "^0.14.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vueco/vue-rapid.git"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "keywords": [
+    "vue",
+    "crud",
+    "grid",
+    "table",
+    "form",
+    "schema",
+    "generator",
+    "bootstrap",
+    "admin",
+    "ui"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/vueco/vue-rapid/issues"
+  },
+  "homepage": "https://vue-rapid.netlify.com/"
+}
