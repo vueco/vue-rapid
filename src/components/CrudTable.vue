@@ -128,6 +128,7 @@
 
 <script>
 import _ from 'lodash';
+import Vue from 'vue';
 
 import nest from '../helpers/nest';
 import plainify from '../helpers/plainify';
@@ -247,10 +248,8 @@ export default {
      * Filter and sort data for output
      */
     rows() {
-      const self = this;
-      const { sortKey } = this;
       const filterKey = this.filterKey && this.filterKey.toLowerCase();
-      const order = this.sortOrders[sortKey] || 1;
+      const order = this.sortOrders[this.sortKey] || 1;
       let data = [];
 
       if (Array.isArray(this.source)) {
@@ -266,10 +265,10 @@ export default {
             .includes(filterKey)));
       }
 
-      if (this.type === 'client' && sortKey) {
+      if (this.type === 'client' && this.sortKey) {
         data = data.slice().sort((a, b) => {
-          a = a[sortKey]; // eslint-disable-line no-param-reassign
-          b = b[sortKey]; // eslint-disable-line no-param-reassign
+          a = a[this.sortKey]; // eslint-disable-line no-param-reassign
+          b = b[this.sortKey]; // eslint-disable-line no-param-reassign
 
           if (a === b) {
             return 0;
@@ -279,8 +278,8 @@ export default {
         });
       }
 
-      const rows = nest(data, self.groupBy);
-      const { deepSequence } = plainify(rows, self.groupBy, (groupBy, key, level, index, ids) => ({
+      const rows = nest(data, this.groupBy);
+      const { deepSequence } = plainify(rows, this.groupBy, (groupBy, key, level, index, ids) => ({
         type: '_group',
         level,
         key: groupBy[level],
@@ -358,11 +357,7 @@ export default {
       this.collapsedRows = [];
       this.hiddenRows = [];
 
-      if (!this.sortOrders[key]) {
-        this.sortOrders[key] = 1;
-      }
-
-      this.sortOrders[key] = this.sortOrders[key] * -1;
+      Vue.set(this.sortOrders, key, this.sortOrders[key] ? this.sortOrders[key] * -1 : 1);
 
       this.$emit('changeSorting', key, this.sortOrders[key]);
     },
