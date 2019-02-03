@@ -1,6 +1,6 @@
 {
   "name": "vue-rapid",
-  "version": "0.1.9",
+  "version": "0.1.11",
   "private": false,
   "license": "MIT",
   "main": "dist/vue-rapid.umd.js",
@@ -19,7 +19,9 @@
     "lint": "vue-cli-service lint",
     "dev": "vuepress dev docs",
     "serve": "start-storybook -p 9001",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "preversion": "yarn lint && yarn build",
+    "postversion": "git push --all && yarn publish"
   },
   "dependencies": {
     "lodash": "^4.17.11",
@@ -76,7 +78,8 @@
     "generator",
     "bootstrap",
     "admin",
-    "ui"
+    "ui",
+    "scaffolding"
   ],
   "gitHooks": {
     "pre-commit": "lint-staged"
