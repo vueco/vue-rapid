@@ -458,7 +458,7 @@ export default {
         return false;
       }
 
-      const column = _.find(this.calculatedColumns, { id: columnId });
+      const column = _.find(this.calculatedColumns, { field: columnId });
 
       if (!column) {
         return false;
