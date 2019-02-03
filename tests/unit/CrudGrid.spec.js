@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils';
-import Grid from '@/crud/Grid.vue';
+import CrudTable from '@/components/CrudTable.vue';
 
-describe('CrudGrid.vue', () => {
+describe('CrudTable.vue', () => {
   it('renders props.source when passed', () => {
     const source = [];
-    const wrapper = shallowMount(Grid, {
+    const wrapper = shallowMount(CrudTable, {
       propsData: { source },
     });
     expect(wrapper.text()).toMatch('');

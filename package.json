@@ -1,6 +1,6 @@
 {
   "name": "vue-rapid",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "private": false,
   "license": "MIT",
   "main": "dist/vue-rapid.umd.js",
