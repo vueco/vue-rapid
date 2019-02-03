@@ -104,19 +104,17 @@
               v-for="column in visibleColumns"
               :class="column.class"
               :key="column.field">
-              <component
-                v-if="column.component"
-                v-bind:is="column.component"
-                :value="getCellValue(row, column)"
-                >
-              </component>
               <slot
-                v-else
                 :name="column.field"
                 :entry="row"
                 :column="column"
                 :value="getCellValue(row, column)">
-                <div>{{ getCellValue(row, column) }}</div>
+                <component
+                  v-bind:is="getCellComponent(row, column)"
+                  :value="getCellValue(row, column)"
+                >
+                  {{ getCellValue(row, column) }}
+                </component>
               </slot>
             </td>
           </tr>
@@ -132,6 +130,7 @@ import Vue from 'vue';
 
 import nest from '../helpers/nest';
 import plainify from '../helpers/plainify';
+import CrudCard from './CrudCard.vue';
 
 /**
  * Table with multiselect, grouping, sorting
@@ -202,6 +201,10 @@ export default {
       type: Number,
       default: 1,
     },
+  },
+
+  components: {
+    CrudCard,
   },
 
   data() {
@@ -486,6 +489,18 @@ export default {
       }
 
       return classes;
+    },
+
+    getCellComponent(row, column) {
+      if (column.component) {
+        return column.component;
+      }
+
+      if (_.isObject(this.getCellValue(row, column))) {
+        return 'CrudCard';
+      }
+
+      return 'div';
     },
 
     /**
