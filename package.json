@@ -9,7 +9,8 @@
   "browser": {
     "./form": "src/components/CrudForm.vue",
     "./form-group": "src/components/CrudFormGroup.vue",
-    "./table": "src/components/CrudTable.vue"
+    "./table": "src/components/CrudTable.vue",
+    "./app": "src/lib/app.js"
   },
   "author": "Aleksey Razbakov <aleksey@razbakov.com> (https://razbakov.com)",
   "scripts": {
