@@ -53,8 +53,8 @@ export default {
           field: key,
           label: _.upperFirst(key),
           form: {
-            component: _.isObject(this.value[key]) ? 'CrudForm' : 'input',
-            class: _.isObject(this.value[key]) ? 'm-3' : 'form-control',
+            component: _.isPlainObject(this.value[key]) ? 'CrudForm' : 'input',
+            class: _.isPlainObject(this.value[key]) ? 'm-3' : 'form-control',
           },
         }));
       }
