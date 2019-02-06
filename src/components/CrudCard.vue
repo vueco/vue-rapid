@@ -23,7 +23,7 @@ export default {
       return _.upperFirst(key);
     },
     getComponent(value) {
-      if (_.isObject(value)) {
+      if (_.isPlainObject(value)) {
         return 'CrudCard';
       }
       return 'dd';
