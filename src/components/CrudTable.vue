@@ -498,7 +498,7 @@ export default {
         return column.component;
       }
 
-      if (_.isPlainObject(this.getCellValue(row, column))) {
+      if (!column.filter && _.isPlainObject(this.getCellValue(row, column))) {
         return 'CrudCard';
       }
 
