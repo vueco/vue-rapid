@@ -12,12 +12,7 @@ import _ from 'lodash';
 
 export default {
   name: 'CrudCard',
-  props: {
-    value: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
+  props: ['value'],
   methods: {
     getLabel(key) {
       return _.upperFirst(key);
