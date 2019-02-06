@@ -111,6 +111,8 @@
                 :value="getCellValue(row, column)">
                 <component
                   v-bind:is="getCellComponent(row, column)"
+                  :row="row"
+                  :column="column"
                   :value="getCellValue(row, column)"
                 >
                   {{ getCellValue(row, column) }}
